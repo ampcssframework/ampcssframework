@@ -1,0 +1,18 @@
+// _social-share.scss (amp.dev)
+
+@if $enable-amp-social-share {
+	amp-social-share.custom-style {
+		background-color: $primary;
+		background-image: url('https://raw.githubusercontent.com/google/material-design-icons/master/social/1x_web/ic_share_white_48dp.webp');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+	
+	
+	amp-social-share.framework {
+		border-radius: 50%;
+		background-size: 60%;
+		background-color: $primary;
+	}
+}

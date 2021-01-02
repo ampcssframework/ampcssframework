@@ -1,0 +1,17 @@
+// _transition.scss
+
+@mixin transition($transition...) {
+  @if $enable-amp-transitions {
+    @if length($transition) == 0 {
+      transition: $transition-base;
+    } @else {
+      transition: $transition;
+    }
+  }
+
+  @if $enable-amp-prefers-reduced-motion-media-query {
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+}

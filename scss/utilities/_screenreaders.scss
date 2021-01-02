@@ -1,0 +1,14 @@
+//
+// Screenreaders
+//
+@if $enable-amp-sr-only-class {
+	.sr-only {
+	  @include sr-only();
+	}
+}
+
+@if $enable-amp-sr-only-focusable-class {	
+	.sr-only-focusable {
+	  @include sr-only-focusable();
+	}
+}

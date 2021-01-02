@@ -1,0 +1,38 @@
+
+// Common values
+@if $enable-amp-position-classes {
+	@each $position in $positions {
+	  .position-#{$position} { position: $position; }
+	}
+}
+
+// Shorthand
+@if $enable-amp-position-fixed-top-class {
+	.fixed-top {
+	  position: fixed;
+	  top: 0;
+	  right: 0;
+	  left: 0;
+	  z-index: $zindex-fixed;
+	}
+}
+
+@if $enable-amp-position-fixed-bottom-class {
+	.fixed-bottom {
+	  position: fixed;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  z-index: $zindex-fixed;
+	}
+}
+
+@if $enable-amp-position-sticky-top-class {
+	.sticky-top {
+	  @supports (position: sticky) {
+	    position: sticky;
+	    top: 0;
+	    z-index: $zindex-sticky;
+	  }
+	}
+}

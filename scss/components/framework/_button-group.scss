@@ -1,0 +1,204 @@
+// _button-groups.scss
+
+
+// Make the div behave like a button
+@if $enable-amp-button-group {
+	@if $enable-amp-button-group-x {
+		.btn-group {
+		  position: relative;
+		  display: inline-flex;
+		  vertical-align: middle; // match .btn alignment given font-size hack above
+		
+		  > .btn {
+		    position: relative;
+		    flex: 1 1 auto;
+		
+		    // Bring the hover, focused, and "active" buttons to the front to overlay
+		    // the borders properly
+		    @include hover() {
+		      z-index: 1;
+		    }
+		    &:focus,
+		    &:active,
+		    &.active {
+		      z-index: 1;
+		    }
+		  }
+		}
+	}
+	
+	@if $enable-amp-button-group-y {
+		.btn-group-vertical {
+		  position: relative;
+		  display: inline-flex;
+		  vertical-align: middle; // match .btn alignment given font-size hack above
+		
+		  > .btn {
+		    position: relative;
+		    flex: 1 1 auto;
+		
+		    // Bring the hover, focused, and "active" buttons to the front to overlay
+		    // the borders properly
+		    @include hover() {
+		      z-index: 1;
+		    }
+		    &:focus,
+		    &:active,
+		    &.active {
+		      z-index: 1;
+		    }
+		  }
+		}
+	}
+}
+
+// Optional: Group multiple button groups together for a toolbar
+@if $enable-amp-button-btn-toolbar {
+	.btn-toolbar {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: flex-start;
+	
+	  .input-group {
+	    width: auto;
+	  }
+	}
+}
+
+@if $enable-amp-button-group {
+	@if $enable-amp-button-group-x {
+		.btn-group {
+		  // Prevent double borders when buttons are next to each other
+		  > .btn:not(:first-child),
+		  > .btn-group:not(:first-child) {
+		    margin-left: -$button-border-width;
+		  }
+		
+		  // Reset rounded corners
+		  > .btn:not(:last-child):not(.dropdown-toggle),
+		  > .btn-group:not(:last-child) > .btn {
+		    @include border-right-radius(0);
+		  }
+		
+		  > .btn:not(:first-child),
+		  > .btn-group:not(:first-child) > .btn {
+		    @include border-left-radius(0);
+		  }
+		}
+	}
+}
+
+// Sizing
+//
+// Remix the default button sizing classes into new ones for easier manipulation.
+@if $enable-amp-button-group-size-sm {
+	.btn-group-sm > .btn { @extend .btn-sm; }
+}
+
+@if $enable-amp-button-group-size-lg {
+	.btn-group-lg > .btn { @extend .btn-lg; }
+}
+
+//
+// Split button dropdowns
+//
+@if $enable-amp-button-group-dropdown-toggle-split {
+	.dropdown-toggle-split {
+	  padding-right: $button-padding-x * .75;
+	  padding-left: $button-padding-x * .75;
+	
+	  &::after,
+	  .dropup &::after,
+	  .dropright &::after {
+	    margin-left: 0;
+	  }
+	
+	  .dropleft &::before {
+	    margin-right: 0;
+	  }
+	}
+	
+	.btn-sm + .dropdown-toggle-split {
+	  padding-right: $button-padding-x-sm * .75;
+	  padding-left: $button-padding-x-sm * .75;
+	}
+	
+	.btn-lg + .dropdown-toggle-split {
+	  padding-right: $button-padding-x-lg * .75;
+	  padding-left: $button-padding-x-lg * .75;
+	}
+}
+
+
+// The clickable button for toggling the menu
+// Set the same inset shadow as the :active state
+@if $enable-amp-button-group-x {
+	.btn-group.show .dropdown-toggle {
+	  @include box-shadow($button-active-box-shadow);
+	
+	  // Show no shadow for `.btn-link` since it has no other button styles.
+	  &.btn-link {
+	    @include box-shadow(none);
+	  }
+	}
+}
+
+
+//
+// Vertical button groups
+//
+@if $enable-amp-button-group-y {
+	.btn-group-vertical {
+	  flex-direction: column;
+	  align-items: flex-start;
+	  justify-content: center;
+	
+	  > .btn,
+	  > .btn-group {
+	    width: 100%;
+	  }
+	
+	  > .btn:not(:first-child),
+	  > .btn-group:not(:first-child) {
+	    margin-top: -$button-border-width;
+	  }
+	
+	  // Reset rounded corners
+	  > .btn:not(:last-child):not(.dropdown-toggle),
+	  > .btn-group:not(:last-child) > .btn {
+	    @include border-bottom-radius(0);
+	  }
+	
+	  > .btn:not(:first-child),
+	  > .btn-group:not(:first-child) > .btn {
+	    @include border-top-radius(0);
+	  }
+	}
+}
+
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;`
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+@if $enable-amp-button-group-toggle {
+	.btn-group-toggle {
+	  > .btn,
+	  > .btn-group > .btn {
+	    margin-bottom: 0; // Override default `<label>` value
+	
+	    input[type="radio"],
+	    input[type="checkbox"] {
+	      position: absolute;
+	      clip: rect(0, 0, 0, 0);
+	      pointer-events: none;
+	    }
+	  }
+	}
+}

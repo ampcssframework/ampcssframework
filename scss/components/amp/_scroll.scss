@@ -1,0 +1,32 @@
+// _scroll.scss
+
+@if $enable-amp-scroll {
+	.scrollToTop {
+	  color: $light;
+	  background: $dark;
+	  font-size: 1.2em;
+	  line-height: 1.5rem;
+	  box-shadow: $box-shadow;
+	  width: 50px;
+	  height: 50px;
+	  border-radius: 50%;
+	  border: none;
+	  outline: none;
+	  z-index: 99999;
+	  bottom: 1rem;
+	  right: 1rem;
+	  position: fixed;
+	  opacity: 0;
+	  visibility: hidden;
+	}
+	
+	/* we move the anchor down to componsate the fixed header */
+  .target {
+    position: relative;
+  }
+  
+  .target-anchor {
+    position: absolute;
+    top: -120px; // Position stop
+	}
+}

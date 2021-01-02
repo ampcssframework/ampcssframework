@@ -1,0 +1,6 @@
+@if $enable-amp-shadow-classes {
+	.shadow-sm { box-shadow: $box-shadow-sm; }
+	.shadow { box-shadow: $box-shadow; }
+	.shadow-lg { box-shadow: $box-shadow-lg; }
+	.shadow-none { box-shadow: none; }
+}

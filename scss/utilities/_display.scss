@@ -1,0 +1,27 @@
+
+//
+// Utilities for common `display` values
+//
+@if $enable-amp-display {
+	@each $amp-breakpoint in map-keys($amp-grid-breakpoints) {
+	  @include media-breakpoint-up($amp-breakpoint) {
+	    $infix: breakpoint-infix($amp-breakpoint, $amp-grid-breakpoints);
+	
+	    @each $value in $displays {
+	      .d#{$infix}-#{$value} { display: $value; }
+	    }
+	  }
+	}
+}
+
+
+//
+// Utilities for toggling `display` in print
+//
+@if $enable-amp-display-print-classes {
+	@media print {
+	  @each $value in $displays {
+	    .d-print-#{$value} { display: $value; }
+	  }
+	}
+}

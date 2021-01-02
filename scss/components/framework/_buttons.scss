@@ -1,0 +1,155 @@
+// _buttons.scss
+
+//
+// Base styles
+//
+
+@if $enable-amp-button {
+	.btn {
+	  display: inline-block;
+	  font-family: $button-font-family;
+	  font-weight: $button-font-weight;
+	  color: $body-color;
+	  text-align: center;
+	  white-space: $button-white-space;
+	  vertical-align: middle;
+	  cursor: if($enable-amp-button-pointer-cursor, pointer, null);
+	  user-select: none;
+	  background: transparent;
+	  border: $button-border-width solid transparent;
+	  @include button-size($button-padding-y, $button-padding-x, $button-font-size, $button-line-height, $button-border-radius);
+	  @include transition($button-transition);
+	
+	  @include hover() {
+	    color: $body-color;
+	    text-decoration: none;
+	  }
+	
+	  &:focus,
+	  &.focus {
+	    outline: 0;
+	    box-shadow: $button-focus-box-shadow;
+	  }
+		
+		@if $enable-amp-button-disabled {
+		  // Disabled comes first so active can properly restyle
+		  &.disabled,
+		  &:disabled {
+		    opacity: $button-disabled-opacity;
+		    @include box-shadow(none);
+		  }
+		}
+	
+	  &:not(:disabled):not(.disabled):active,
+	  &:not(:disabled):not(.disabled).active {
+	    @include box-shadow($button-active-box-shadow);
+	
+	    &:focus {
+	      @include box-shadow($button-focus-box-shadow, $button-active-box-shadow);
+	    }
+	  }
+	}
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+@if $enable-amp-button-disabled {
+	a.btn.disabled,
+	fieldset:disabled a.btn {
+	  pointer-events: none;
+	}
+}
+
+
+//
+// Alternate buttons
+//
+
+@if $enable-amp-button-colors {
+	@each $color, $value in $amp-theme-colors {
+	  .btn-#{$color} {
+	    @include button-variant($value, $value);
+	  }
+	}
+}
+
+@if $enable-amp-button-outline {
+	@each $color, $value in $amp-theme-colors {
+	  .btn-outline-#{$color} {
+	    @include button-outline-variant($value);
+	  }
+	}
+}
+
+
+//
+// Link buttons
+//
+
+@if $enable-amp-link-button {
+	// Make a button look and behave like a link
+	.btn-link {
+	  font-weight: $font-weight-base;
+	  color: $link-color;
+	  text-decoration: $link-decoration;
+	
+	  @include hover() {
+	    color: $link-hover-color;
+	    text-decoration: $link-hover-decoration;
+	  }
+	
+	  &:focus,
+	  &.focus {
+	    text-decoration: $link-hover-decoration;
+	    box-shadow: none;
+	  }
+	  
+	  @if $enable-amp-button-disabled {
+	  	&:disabled,
+			&.disabled {
+	    	color: $button-link-disabled-color;
+				pointer-events: none;
+			}
+	  }
+	}
+}
+
+
+//
+// Button Sizes
+//
+@if $enable-amp-button-size-sm {
+	.btn-sm {
+	  @include button-size($button-padding-y-sm, $button-padding-x-sm, $button-font-size-sm, $button-line-height-sm, $button-border-radius-sm);
+	}
+}
+
+@if $enable-amp-button-size-lg {
+	.btn-lg {
+	  @include button-size($button-padding-y-lg, $button-padding-x-lg, $button-font-size-lg, $button-line-height-lg, $button-border-radius-lg);
+	}
+}
+
+
+//
+// Block button
+//
+@if $enable-amp-block-button {
+	.btn-block {
+	  display: block;
+	  width: 100%;
+	
+	  // Vertically space out multiple block buttons
+	  + .btn-block {
+	    margin-top: $button-block-spacing-y;
+	  }
+	}
+
+	// Specificity overrides
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"] {
+	  &.btn-block {
+	    width: 100%;
+	  }
+	}
+}

@@ -1,0 +1,67 @@
+// _grid.scss
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if $enable-amp-grid {
+  // Single container class with breakpoint max-widths
+  .container {
+    @include create-amp-container();
+    @include create-amp-container-max-widths();
+  }
+
+  // 100% wide container at all breakpoints
+  .container-fluid {
+    @include create-amp-container();
+  }
+
+  // Responsive containers that are 100% wide until a breakpoint
+  @each $amp-breakpoint, $amp-container-max-width in $amp-container-max-widths {
+    .container-#{$amp-breakpoint} {
+      @extend .container-fluid;
+    }
+
+    @include media-breakpoint-up($amp-breakpoint, $amp-grid-breakpoints) {
+      %responsive-container-#{$amp-breakpoint} {
+        max-width: $amp-container-max-width;
+      }
+
+      @each $name, $width in $amp-grid-breakpoints {
+        @if ($amp-container-max-width > $width or $amp-breakpoint == $name) {
+          .container#{breakpoint-infix($name, $amp-grid-breakpoints)} {
+            @extend %responsive-container-#{$amp-breakpoint};
+          }
+        }
+      }
+    }
+  }
+
+
+	// Row
+	//
+	// Rows contain your columns.
+  .row {
+    @include create-amp-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  @if $enable-amp-grid-gutterless {
+	  .gutterless {
+	    margin-right: 0;
+	    margin-left: 0;
+	
+	    > .col,
+	    > [class*="col-"] {
+	      padding-right: 0;
+	      padding-left: 0;
+	    }
+	  }
+	}
+
+	// Columns
+	//
+	// Common styles for small and large grid columns
+  @include create-grid-columns();
+}

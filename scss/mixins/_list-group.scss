@@ -1,0 +1,21 @@
+// _list-group.scss
+
+@mixin list-group-item-variant($state, $background, $color) {
+  .list-group-item-#{$state} {
+    color: $color;
+    background: $background;
+
+    &.list-group-item-action {
+      @include hover-focus() {
+        color: $color;
+        background: darken($background, 5%);
+      }
+
+      &.active {
+        color: $white;
+        background: $color;
+        border-color: $color;
+      }
+    }
+  }
+}

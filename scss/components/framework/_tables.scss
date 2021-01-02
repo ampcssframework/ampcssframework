@@ -1,0 +1,203 @@
+// _tables.scss
+
+//
+// Basic tables
+//
+@if $enable-amp-table {
+	table {
+	  width: 100%;
+	  margin-bottom: $spacer;
+		
+		@media (prefers-color-scheme: light) {
+			color: $table-color;
+			background: $table-bg; // Reset for nesting within parents with `background-color`.
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $table-color-inverse;
+			background: $table-bg-inverse; // Reset for nesting within parents with `background-color`.
+		}
+	
+	  th,
+	  td {
+	    padding: $table-cell-padding;
+	    vertical-align: top;
+		
+			@media (prefers-color-scheme: light) {
+				border-top: $table-border-width solid $table-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				border-top: $table-border-width solid $table-border-color-inverse;
+			}
+	  }
+	
+	  thead th {
+	    vertical-align: bottom;
+		
+			@media (prefers-color-scheme: light) {
+				border-bottom: (2 * $table-border-width) solid $table-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				border-bottom: (2 * $table-border-width) solid $table-border-color-inverse;
+			}
+	  }
+	
+	  tbody + tbody {
+		
+			@media (prefers-color-scheme: light) {
+				border-top: (2 * $table-border-width) solid $table-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				border-top: (2 * $table-border-width) solid $table-border-color-inverse;
+			}
+	  }
+	}
+}
+
+// Border versions
+//
+// Add or remove borders all around the tbl and between all the columns.
+@if $enable-amp-table-bordered {
+	table.bordered {
+		@media (prefers-color-scheme: light) {
+			border: $table-border-width solid $table-border-color;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			border: $table-border-width solid $table-border-color-inverse;
+		}
+	
+	  th,
+	  td {
+			@media (prefers-color-scheme: light) {
+				border: $table-border-width solid $table-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				border: $table-border-width solid $table-border-color-inverse;
+			}
+	  }
+	
+	  thead {
+	    th,
+	    td {
+	      border-bottom-width: 2 * $table-border-width;
+	    }
+	  }
+	}
+}
+
+@if $enable-amp-table-borderless {
+	table.borderless {
+	  th,
+	  td,
+	  thead th,
+	  tbody + tbody {
+	    border: 0;
+	  }
+	}
+}
+
+// Striped
+//
+// Default stripe styles (alternating gray and transparent backgrounds)
+@if $enable-amp-table-striped {
+	table.striped {
+	  tbody tr:nth-of-type(#{$table-striped-order}) {
+			@media (prefers-color-scheme: light) {
+				background: $table-accent-bg;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				background: $table-accent-bg-inverse;
+			}
+	  }
+	}
+}
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+@if $enable-amp-table-hover {
+	table.hover {
+	  tbody tr {
+	    @include hover() {
+		
+				@media (prefers-color-scheme: light) {
+					color: $table-hover-color;
+	      	background: $table-hover-bg;
+				}
+			
+				@media (prefers-color-scheme: dark) {
+					color: $table-hover-color-inverse;
+	      	background: $table-hover-bg-inverse;
+				}
+	    }
+	  }
+	}
+}
+
+// tbl backgrounds
+//
+// Exact selectors below required to override `.table-spd` and prevent
+// inheritance to nested tbls.
+
+@if $enable-amp-table-colors {
+	@each $color, $value in $amp-theme-colors {
+	  @include table-row-variant($color, theme-color-level($color, $table-bg-level), theme-color-level($color, $table-border-level));
+	}
+}
+
+@if $enable-amp-table-active {
+	@media (prefers-color-scheme: light) {
+		@include table-row-variant(active, $table-active-bg);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		@include table-row-variant(active, $table-active-bg-inverse);
+	}
+}
+
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your tbl will overflow.
+@if $enable-amp-table-responsive {
+	.table-responsive {
+	  @each $amp-breakpoint in map-keys($amp-grid-breakpoints) {
+	    $next: breakpoint-next($amp-breakpoint, $amp-grid-breakpoints);
+	    $infix: breakpoint-infix($next, $amp-grid-breakpoints);
+	
+	    &#{$infix} {
+	      @include media-breakpoint-down($amp-breakpoint) {
+	        display: block;
+	        width: 100%;
+	        overflow-x: auto;
+	        -webkit-overflow-scrolling: touch;
+	
+	        // Prevent double border on horizontal scroll due to use of `display: block;`
+	        > .table-brd {
+	          border: 0;
+	        }
+	      }
+	    }
+	  }
+	}
+}
+
+
+//
+// Condensed table w/ half padding
+//
+@if $enable-amp-table-sm {
+	table.small {
+	  th,
+	  td {
+	    padding: $table-cell-padding-sm;
+	  }
+	}
+}

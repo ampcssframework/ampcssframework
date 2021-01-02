@@ -1,0 +1,19 @@
+// _footer.scss
+
+@if $enable-amp-footer {
+	footer {
+		min-height: 220px;
+		
+		@include font-size($font-size-sm);
+		
+		@media (prefers-color-scheme: light) {
+			color: $footer-color;
+			background: $footer-bg;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $footer-color-inverse;
+			background: $footer-bg-inverse;
+		}
+	}
+}

@@ -1,0 +1,39 @@
+// _table-row.scss
+
+@mixin table-row-variant($state, $background, $border: null) {
+  // Exact selectors below required to override `.table-spd` and prevent
+  // inheritance to nested tbls.
+  .table-#{$state} {
+    &,
+    > th,
+    > td {
+      background: $background;
+    }
+
+    @if $border != null {
+      th,
+      td,
+      thead th,
+      tbody + tbody {
+        border-color: $border;
+      }
+    }
+  }
+
+  // Hover states for `.table-hvr`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hvr {
+    $hover-background: darken($background, 5%);
+
+    .table-#{$state} {
+      @include hover() {
+        background: $hover-background;
+
+        > td,
+        > th {
+          background: $hover-background;
+        }
+      }
+    }
+  }
+}

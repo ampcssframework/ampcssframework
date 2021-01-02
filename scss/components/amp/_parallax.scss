@@ -1,0 +1,38 @@
+// _parallax.scss
+
+@if $enable-amp-parallax {
+  .parallax-section {
+    position: relative;
+    overflow: hidden;
+
+    h5 {
+      bottom: 15%;
+      left: $amp-grid-gutter-width;
+      position: absolute;
+      z-index: 1;
+      padding: $amp-grid-gutter-width;
+  
+      @media (prefers-color-scheme: light) {
+        color: $white;
+        background: rgba($color: $gray-900, $alpha: 0.75);
+      }
+    
+      @media (prefers-color-scheme: dark) {
+        color: $dark;
+        background: rgba($color: $gray-100, $alpha: 0.75);
+      }
+    }
+
+    .parallax-title {
+      font-size: $font-size-lg*2;
+    }
+  }
+
+  .parallax-image-window {
+    overflow: hidden;
+  }
+
+  .parallax-image-window amp-img {
+    margin-bottom: -20%;
+  }
+}

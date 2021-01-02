@@ -1,0 +1,33 @@
+// _jumbotron.scss
+
+@if $enable-amp-jumbotron {
+	.jumbotron {
+	  padding: $jumbotron-padding ($jumbotron-padding / 2);
+		margin-bottom: $jumbotron-padding;
+		
+	  @include border-radius($border-radius-lg);
+	
+	  @include media-breakpoint-up(sm) {
+	    padding: ($jumbotron-padding * 2) $jumbotron-padding;
+	  }
+		
+		@media (prefers-color-scheme: light) {
+			color: $jumbotron-color;
+			background: $jumbotron-bg;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $jumbotron-color-inverse;
+			background: $jumbotron-bg-inverse;
+		}
+	}
+}
+
+@if $enable-amp-jumbotron-fluid {
+	.jumbotron-fluid {
+	  padding-right: 0;
+		padding-left: 0;
+		
+	  @include border-radius(0);
+	}
+}

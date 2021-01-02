@@ -1,0 +1,119 @@
+// _pagination.scss
+
+@if $enable-amp-pagination {
+	.pagination {
+		display: flex;
+		
+	  @include list-unstyled();
+	  @include border-radius();
+	}
+	
+	.page-link {
+	  position: relative;
+	  display: block;
+	  padding: $pagination-padding-y $pagination-padding-x;
+	  margin-left: -$pagination-border-width;
+		line-height: $pagination-line-height;
+		
+		@media (prefers-color-scheme: light) {
+			color: $pagination-color;
+			background: $pagination-bg;
+			border: $pagination-border-width solid $pagination-border-color;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $pagination-color-inverse;
+			background: $pagination-bg-inverse;
+			border: $pagination-border-width solid $pagination-border-color-inverse;
+		}
+	
+	  &:hover {
+	    z-index: 2;
+	    text-decoration: none;
+		
+			@media (prefers-color-scheme: light) {
+				color: $pagination-hover-color;
+				background: $pagination-hover-bg;
+				border-color: $pagination-hover-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				color: $pagination-hover-color-inverse;
+				background: $pagination-hover-bg-inverse;
+				border-color: $pagination-hover-border-color-inverse;
+			}
+	  }
+	
+	  &:focus {
+	    z-index: 3;
+	    outline: $pagination-focus-outline;
+	    box-shadow: $pagination-focus-box-shadow;
+	  }
+	}
+	
+	.page-item {
+	  &:first-child {
+	    .page-link {
+				margin-left: 0;
+				
+	      @include border-left-radius($border-radius);
+	    }
+		}
+		
+	  &:last-child {
+	    .page-link {
+	      @include border-right-radius($border-radius);
+	    }
+	  }
+	
+	  &.active .page-link {
+	    z-index: 3;
+		
+			@media (prefers-color-scheme: light) {
+				color: $pagination-active-color;
+				background: $pagination-active-bg;
+				border-color: $pagination-active-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				color: $pagination-active-color-inverse;
+				background: $pagination-active-bg-inverse;
+				border-color: $pagination-active-border-color-inverse;
+			}
+	  }
+	
+	  &.disabled .page-link {
+	    pointer-events: none;
+	    // Opinionated: remove the "hand" cursor set previously for .page-link
+	    cursor: auto;
+		
+			@media (prefers-color-scheme: light) {
+				color: $pagination-disabled-color;
+				background: $pagination-disabled-bg;
+				border-color: $pagination-disabled-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				color: $pagination-disabled-color-inverse;
+				background: $pagination-disabled-bg-inverse;
+				border-color: $pagination-disabled-border-color-inverse;
+			}
+	  }
+	}
+}
+
+
+//
+// Sizing
+//
+@if $enable-amp-pagination-size-sm {
+	.pagination-sm {
+	  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
+	}
+}
+
+@if $enable-amp-pagination-size-lg {
+	.pagination-lg {
+	  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
+	}
+}

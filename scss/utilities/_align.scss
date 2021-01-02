@@ -1,0 +1,9 @@
+
+@if $enable-amp-align {
+	.align-baseline    { vertical-align: baseline; } // Browser default
+	.align-top         { vertical-align: top; }
+	.align-middle      { vertical-align: middle; }
+	.align-bottom      { vertical-align: bottom; }
+	.align-text-bottom { vertical-align: text-bottom; }
+	.align-text-top    { vertical-align: text-top; }
+}

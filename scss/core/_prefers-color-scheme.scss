@@ -1,0 +1,23 @@
+// _prefers-color-scheme.scss
+
+// Reboot bootstrap
+.bg-warning {
+  @media (prefers-color-scheme: dark) {
+    color: $body-color;
+  }
+}
+
+// Amp sidebar
+#sidebar {
+  @media (prefers-color-scheme: dark) {
+    background: $body-bg-inverse;
+  }
+}
+
+.sidebar-close {
+  background: transparent;
+
+  @media (prefers-color-scheme: dark) {
+    color: $body-color-inverse;
+  }
+}

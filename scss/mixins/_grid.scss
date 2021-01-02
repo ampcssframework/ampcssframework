@@ -1,0 +1,80 @@
+// _grid.scss
+
+// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+@mixin create-amp-container($amp-gutter: $amp-grid-gutter-width) {
+  width: 100%;
+  padding-right: $amp-gutter / 2;
+  padding-left: $amp-gutter / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin create-amp-container-max-widths($amp-max-widths: $amp-container-max-widths, $amp-breakpoints: $amp-grid-breakpoints) {
+  @each $amp-breakpoint, $amp-container-max-width in $amp-max-widths {
+    @include media-breakpoint-up($amp-breakpoint, $amp-breakpoints) {
+      max-width: $amp-container-max-width;
+    }
+  }
+}
+
+@mixin create-amp-row($amp-gutter: $amp-grid-gutter-width) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$amp-gutter / 2;
+  margin-left: -$amp-gutter / 2;
+}
+
+@mixin create-amp-columns-ready($amp-gutter: $amp-grid-gutter-width) {
+	@if $enable-amp-grid-columns-ready {
+	  position: relative;
+	  // Prevent columns from becoming too narrow when at smaller grid tiers by
+	  // always setting `width: 100%;`. This works because we use `flex` values
+	  // later on to override this initial width.
+	  width: 100%;
+	  padding-right: $amp-gutter / 2;
+	  padding-left: $amp-gutter / 2;
+	}
+}
+
+@mixin create-amp-columns($amp-size, $amp-columns: $amp-grid-columns) {
+  flex: 0 0 percentage($amp-size / $amp-columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($amp-size / $amp-columns);
+}
+
+@mixin create-amp-columns-auto() {
+	@if $enable-amp-grid-columns-auto {
+	  flex: 0 0 auto;
+	  width: auto;
+	  max-width: 100%; // Reset earlier grid tiers
+	}
+}
+
+@mixin create-amp-columns-offset($amp-size, $amp-columns: $amp-grid-columns) {
+	@if $enable-amp-grid-columns-offset {
+  	$num: $amp-size / $amp-columns;
+		margin-left: if($num == 0, 0, percentage($num));
+	}
+}
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+
+@mixin row-cols($count) {
+	@if $enable-amp-grid-row-cols {
+	  & > * {
+	    flex: 0 0 100% / $count;
+	    max-width: 100% / $count;
+	  }
+	}
+}

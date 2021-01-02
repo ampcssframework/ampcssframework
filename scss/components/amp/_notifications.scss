@@ -1,0 +1,68 @@
+// _notification.scss
+
+@if $enable-amp-notification {
+	/* Center the notification content */
+	amp-user-notification.cookie-notification {
+		position: absolute;
+		display: block;
+	  padding: 1rem;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+		z-index: $zindex-notification;
+		border: $border-width-base $border-style-base;
+	  
+	  @include font-size($font-size-sm);
+  
+		@media (prefers-color-scheme: light) {
+			color: $body-color;
+			background: $light;
+			border-color: $gray-300;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $body-color-inverse;
+			background: $gray;
+			border-color: $gray-700;
+		}
+	}
+
+	// Alert Popup
+	amp-user-notification.alert-notification {
+		height: 100%;
+	  background: $white;
+	  border: 5px solid $primary;
+	  padding: 1rem;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  z-index: 999999999;
+	  box-shadow: 0 1rem 3rem rgba($black, .175);
+  
+		@media (prefers-color-scheme: light) {
+			color: $body-color;
+			background: $body-bg;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $body-color-inverse;
+			background: $body-bg-inverse;
+		}
+	  
+	  //@include font-size($font-size-sm);
+	}
+	
+	@keyframes fadeIn {
+	  from {
+	    opacity: 0;
+	  }
+	  to {
+	    opacity: 1;
+	  }
+	}
+	
+	amp-user-notification.amp-active {
+	  opacity: 0;
+	  animation: fadeIn ease-in 1s 1 forwards;
+	}
+}

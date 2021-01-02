@@ -1,0 +1,172 @@
+// _nav.scss
+
+// Base class
+//
+// Kickstart any navigation component with a set of style resets. Works with
+// `<nav>`s, `<ul>`s or `<ol>`s.
+@if $enable-amp-nav {
+	.nav {
+	  display: flex;
+	  flex-wrap: wrap;
+	  padding-left: 0;
+	  margin-bottom: 0;
+	  list-style: none;
+	}
+}
+
+@if $enable-amp-nav-link {
+	.nav-link {
+	  display: block;
+	  padding: $nav-link-padding-y $nav-link-padding-x;
+	
+	  @include hover-focus() {
+	    text-decoration: none;
+	  }
+	  
+	  @if $enable-amp-nav-link-disabled {
+		  // Disabled state lightens text
+		  &.disabled {
+		    pointer-events: none;
+		    cursor: default;
+		
+				@media (prefers-color-scheme: light) {
+					color: $nav-link-disabled-color;
+				}
+			
+				@media (prefers-color-scheme: dark) {
+					color: $nav-link-disabled-color-inverse;
+				}
+		  }
+		}
+	}
+}
+
+//
+// Tabs
+//
+@if $enable-amp-nav-tabs {
+	.nav-tabs {
+		
+		@media (prefers-color-scheme: light) {
+			border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color-inverse;
+		}
+	
+	  .nav-item {
+	    margin-bottom: -$nav-tabs-border-width;
+	  }
+	
+	  .nav-link {
+			border: $nav-tabs-border-width solid transparent;
+			
+	    @include border-top-radius($nav-tabs-border-radius);
+	
+	    @include hover-focus() {
+				@media (prefers-color-scheme: light) {
+					border-color: $nav-tabs-link-hover-border-color;
+				}
+			
+				@media (prefers-color-scheme: dark) {
+					border-color: $nav-tabs-link-hover-border-color-inverse;
+				}
+	    }
+	    
+	    @if $enable-amp-nav-tabs-diabled {
+		    &.disabled {
+		      color: $nav-link-disabled-color;
+		      background: transparent;
+		      border-color: transparent;
+		    }
+		  }
+	  }
+	
+	  .nav-link.active,
+	  .nav-item.show .nav-link {
+			@media (prefers-color-scheme: light) {
+				color: $nav-tabs-link-active-color;
+				background: $nav-tabs-link-active-bg;
+				border-color: $nav-tabs-link-active-border-color;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				color: $nav-tabs-link-active-color-inverse;
+				background: $nav-tabs-link-active-bg-inverse;
+				border-color: $nav-tabs-link-active-border-color-inverse;
+			}
+	  }
+	
+	  .dropdown-menu {
+	    // Make dropdown border overlap tab border
+	    margin-top: -$nav-tabs-border-width;
+	    // Remove the top rounded corners here since there is a hard edge above the menu
+	    @include border-top-radius(0);
+	  }
+	}
+}
+
+
+//
+// Pills
+//
+@if $enable-amp-nav-pills {
+	.nav-pills {
+	  .nav-link {
+	    @include border-radius($nav-pills-border-radius);
+	  }
+	
+	  .nav-link.active,
+	  .show > .nav-link {
+			@media (prefers-color-scheme: light) {
+				color: $nav-pills-link-active-color;
+				background: $nav-pills-link-active-bg;
+			}
+		
+			@media (prefers-color-scheme: dark) {
+				color: $nav-pills-link-active-color-inverse;
+				background: $nav-pills-link-active-bg-inverse;
+			}
+	  }
+	}
+}
+
+
+//
+// Justified variants
+//
+@if $enable-amp-nav-fill {
+	.nav-fill {
+	  .nav-item {
+	    flex: 1 1 auto;
+	    text-align: center;
+	  }
+	}
+}
+
+@if $enable-amp-nav-justified {
+	.nav-justified {
+	  .nav-item {
+	    flex-basis: 0;
+	    flex-grow: 1;
+	    text-align: center;
+	  }
+	}
+}
+
+
+
+// Tabbable tabs
+//
+// Hide tabbable panes to start, show them when `.active`
+@if $enable-amp-tab-content {
+	.tab-content {
+	  > .tab-pane {
+	    display: none;
+	  }
+	  > .active {
+	    display: block;
+	  }
+	}
+}

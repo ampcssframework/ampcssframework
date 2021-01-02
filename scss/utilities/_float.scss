@@ -1,0 +1,12 @@
+
+@each $amp-breakpoint in map-keys($amp-grid-breakpoints) {
+  @include media-breakpoint-up($amp-breakpoint) {
+    $infix: breakpoint-infix($amp-breakpoint, $amp-grid-breakpoints);
+    
+    @if $enable-amp-float-classes {
+	    .float#{$infix}-left  { float: left; }
+	    .float#{$infix}-right { float: right; }
+	    .float#{$infix}-none  { float: none; }
+	  }
+  }
+}

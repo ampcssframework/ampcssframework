@@ -1,0 +1,62 @@
+// _badge.scss
+
+// Base class
+//
+// Requires one of the contextual, color modifier classes for `color` and
+// `background-color`.
+
+@if $enable-amp-badge {
+	.badge {
+	  display: inline-block;
+	  padding: $badge-padding-y $badge-padding-x;
+	  font-weight: $badge-font-weight;
+	  line-height: 1;
+	  text-align: center;
+	  white-space: nowrap;
+		vertical-align: baseline;
+		
+	  @include font-size($badge-font-size);
+	  @include border-radius($badge-border-radius);
+	  @include transition($badge-transition);
+	
+	  @at-root a#{&} {
+	    @include hover-focus() {
+	      text-decoration: none;
+	    }
+	  }
+	
+	  // Empty badges collapse automatically
+	  &:empty {
+	    display: none;
+	  }
+	}
+	
+	// Quick fix for badges in buttons
+	.btn .badge {
+	  position: relative;
+	  top: -2px;
+	  font-size: 60%;
+	}
+	
+	// Pill badges
+	//
+	// Make them extra rounded with a modifier to replace v3's badges.
+	
+	.badge-pill {
+	  padding-right: $badge-pill-padding-x;
+		padding-left: $badge-pill-padding-x;
+		
+	  @include border-radius($badge-pill-border-radius);
+	}
+}
+	
+// Colors
+//
+// Contextual variations (linked badges get darker on :hover).
+@if $enable-amp-badge-colors {	
+	@each $color, $value in $amp-theme-colors {
+	  .badge-#{$color} {
+	    @include badge-variant($value);
+	  }
+	}
+}

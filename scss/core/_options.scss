@@ -1,0 +1,398 @@
+// _options.scss
+
+// Quickly modify global styling by enabling or disabling optional features.
+
+
+// **************************
+// Core
+// **************************
+$enable-amp-caret:   																	false;
+$enable-amp-prefers-reduced-motion-media-query:   		false;
+$enable-amp-hover-media-query:                    		false; // Deprecated, no longer affects any compiled CSS
+$enable-amp-grid-classes:                         		true;
+$enable-amp-responsive-font-sizes:               			true;
+$enable-amp-validation-icons:                     		false;
+$enable-amp-deprecation-messages:                 		false;
+$enable-amp-root:																			true;
+$enable-amp-reboot:																		true;
+$enable-amp-transitions:                          		false;
+$enable-amp-rounded:                              		true;
+$enable-amp-shadows:                              		false;
+$enable-amp-backgrounds:                            	true;
+$enable-amp-gradients:                            		false;
+
+$enable-amp-button-pointer-cursor:           					true;
+
+$enable-amp-print-styles:                         		false;
+
+
+// Reboot
+$enable-amp-legend:																		false;
+$enable-amp-fieldset:																	false;
+
+
+// **************************
+// Components
+// **************************
+
+
+// Badge
+$enable-amp-badge:																		true;	// $enable-amp-badge
+$enable-amp-badge-colors:															true;	// Depending on $enable-amp-badge
+
+
+// Breadcrumb
+$enable-amp-breadcrumb:																false;
+
+
+// Buttons
+$enable-amp-button:																		true;
+$enable-amp-link-button:															true;	// Depending on $enable-amp-button
+$enable-amp-block-button:															false;	// Depending on $enable-amp-button
+$enable-amp-button-outline:														true;	// Depending on $enable-amp-button
+$enable-amp-button-disabled:													true;	// Depending on $enable-amp-button
+$enable-amp-button-colors:														true;	// Depending on $enable-amp-button
+$enable-amp-button-size-sm:														false;	// Depending on $enable-amp-button
+$enable-amp-button-size-lg:														false;	// Depending on $enable-amp-button
+
+
+// Button groups
+$enable-amp-button-group:															false;
+$enable-amp-button-group-x:														false;	// Horizontal	// Depending on $enable-amp-button-group
+$enable-amp-button-group-y:														false;	// Vertical	// Depending on $enable-amp-button-group
+$enable-amp-button-group-toggle:											false;	// Depending on $enable-amp-button-group
+$enable-amp-button-group-dropdown-toggle-split:				false;	// Depending on $enable-amp-button-group
+$enable-amp-button-group-size-sm:											false;	// Depending on $enable-amp-button-group
+$enable-amp-button-group-size-lg:											false;	// Depending on $enable-amp-button-group
+
+
+// Button toolbbar
+$enable-amp-button-btn-toolbar:												false;
+
+
+// Cards
+$enable-amp-card:																			true;
+$enable-amp-card-header:															false;
+$enable-amp-card-header-tabs:													false;
+$enable-amp-card-header-pills:												false;
+$enable-amp-card-body:																true;
+$enable-amp-card-footer:															false;
+$enable-amp-card-title:																false;
+$enable-amp-card-subtitle:														false;
+$enable-amp-card-text:																false;
+$enable-amp-card-link:																false;
+$enable-amp-card-images:															true;
+$enable-amp-card-deck:																false;
+$enable-amp-card-group:																false;
+$enable-amp-card-columns:															false;
+$enable-amp-card-accordion:														false;
+
+
+// Close
+$enable-amp-close:																		false;
+
+
+// Code
+$enable-amp-code:																			true;
+$enable-amp-kbd:																			true;
+$enable-amp-pre:																			true;
+$enable-amp-pre-scrollable:														false;	// Depending on $enable-amp-pre
+
+
+// Dropdown
+$enable-amp-dropdown:																	false;
+
+
+// Forms
+$enable-amp-form-group:																true;
+$enable-amp-form-text:																true;
+$enable-amp-form-row:																	true;
+$enable-amp-form-control:															true;
+$enable-amp-form-control-file:												true;
+$enable-amp-form-control-plaintext:										true;
+
+$enable-amp-form-control-size-sm:											false;	// Depending on $enable-amp-form-control
+$enable-amp-form-control-size-lg:											false;	// Depending on $enable-amp-form-control
+
+$enable-amp-form-check:																false;  // Checkboxes and radios
+
+$enable-amp-form-inline:															true;
+
+$enable-amp-col-form-label:														true;
+$enable-amp-col-form-label-size-sm:										false;	// Depending on $enable-amp-col-form-label
+$enable-amp-col-form-label-size-lg:										false;	// Depending on $enable-amp-col-form-label
+
+// Disabled form elements
+$enable-amp-form-control-disabled:										true;
+$enable-amp-form-check-disabled:											true;
+
+// Form valitations
+$enable-amp-form-valitation:													true;
+
+// Custom form
+$enable-amp-custom-forms:															false;
+
+
+// Grid
+$enable-amp-grid:																			true;
+$enable-amp-grid-gutterless:													false;
+
+
+// Rows
+$enable-amp-grid-row-cols:														false;
+
+
+// Columns
+$enable-amp-grid-columns-auto:												false;
+$enable-amp-grid-columns-offset:											false;
+$enable-amp-grid-columns-ready:												false;
+$enable-amp-grid-columns-order:												false;
+
+
+// Masonry
+$enable-amp-masonry:																	false;
+$enable-amp-masonry-images:														false;
+$enable-amp-masonry-images-ng:												false;
+
+
+// Images
+$enable-amp-img:																			true;
+$enable-amp-img-fluid:																false;
+$enable-amp-img-thumbnail:														false;
+$enable-amp-figure:																		false;
+$enable-amp-figure-img:																false;
+$enable-amp-figure-caption:														false;
+
+
+
+// Input group
+$enable-amp-input-group:															true;
+$enable-amp-input-group-append:												true;	// Depending on $enable-amp-input-group
+$enable-amp-input-group-prepend:											true;	// Depending on $enable-amp-input-group
+$enable-amp-input-group-text:													true;	// Depending on $enable-amp-input-group
+$enable-amp-input-group-size-sm:											false;	// Depending on $enable-amp-input-group
+$enable-amp-input-group-size-lg:											false;	// Depending on $enable-amp-input-group
+
+
+// Jumbotron
+$enable-amp-jumbotron:																false;
+$enable-amp-jumbotron-fluid:													false;
+
+
+// List group
+$enable-amp-list-group:																false;
+$enable-amp-list-group-item:													false;	// Depending on $enable-amp-list-group
+$enable-amp-list-group-item-action:										false;	// Depending on $enable-amp-list-group
+$enable-amp-list-group-x:															false;	// Horizontal	// Depending on $enable-amp-list-group
+$enable-amp-list-group-flush:													false;	// Depending on $enable-amp-list-group
+$enable-amp-list-group-colors:												false;	// Depending on $enable-amp-list-group
+
+
+// Media
+$enable-amp-media:																		false;
+
+
+// Nav
+$enable-amp-nav:																			true;
+$enable-amp-nav-link:																	false;
+$enable-amp-nav-tabs:																	false;
+$enable-amp-nav-pills:																false;
+$enable-amp-nav-fill:																	false;
+$enable-amp-nav-justified:														false;
+
+$enable-amp-tab-content:															false;
+
+// Disable nav elements
+$enable-amp-nav-link-disabled:												false;	// Depending on $enable-amp-nav-link
+$enable-amp-nav-tabs-diabled:													false;	// Depending on $enable-amp-nav-tabs
+
+
+// Navbar
+$enable-amp-navbar:																		false;
+
+
+// Navigation
+$enable-amp-header-navigation:												true;
+
+
+// Footer
+$enable-amp-footer:																		true;
+
+
+// AMP Sroll
+$enable-amp-scroll:																		true;
+
+
+// AMP Notifications
+$enable-amp-notification:															true;
+
+
+// AMP Social share
+$enable-amp-social-share:															true;
+
+
+// AMP Story
+$enable-amp-story:															      false;
+
+
+// AMP Carousel
+$enable-amp-carousel:																	false;
+
+
+// AMP Parallax
+$enable-amp-parallax:														      false;
+
+
+// AMP Custom Loader
+$enable-amp-custom-loader:														false;
+
+
+// AMP Script
+$enable-amp-script:																		false;
+
+
+// AMP Web push notification
+$enable-amp-web-push-notification:										true;
+
+
+// Pagination
+$enable-amp-pagination:																true;
+$enable-amp-pagination-size-sm:												true;	// Depending on $enable-amp-pagination
+$enable-amp-pagination-size-lg:												true;	// Depending on $enable-amp-pagination
+
+
+// Progress
+$enable-amp-progress:																	false;
+$enable-amp-progress-bar-striped:											false;	// Classes
+$enable-amp-progress-bar-animated:										false;	// Independently $enable-amp-transitions
+
+
+// Tooltip
+$enable-amp-tooltip:																	true;
+$enable-amp-tooltip-top:															true;
+$enable-amp-tooltip-bottom:														true;
+$enable-amp-tooltip-left:															true;
+$enable-amp-tooltip-right:														true;
+
+
+// Spinner
+$enable-amp-spinner:																	false;
+$enable-amp-spinner-grow:															false;
+$enable-amp-spinner-grow-size-sm:											false;	// Depending on $enable-amp-spinner-grow
+
+
+// Tables
+$enable-amp-table:																		true;
+$enable-amp-table-bordered:														false;
+$enable-amp-table-borderless:													false;
+$enable-amp-table-striped:														false;
+$enable-amp-table-hover:															false;
+$enable-amp-table-active:															false;
+$enable-amp-table-responsive:													false;
+$enable-amp-table-colors:															false;
+$enable-amp-table-sm:																	false;
+
+
+// Transition
+$enable-amp-transition-fade:													false;
+$enable-amp-transition-collapse:											false;
+$enable-amp-transition-collapsing:										false;
+
+
+// **************************
+// Utilities (/utilities/)
+// **************************
+
+// Align
+$enable-amp-align:																		false;	// class `.align-top`, `.align-bottom`
+
+// Borders
+$enable-amp-border:																		false;	// class `.border-top`, `.border-bottom`
+$enable-amp-border-rounded:														false;	// class `.border-round`
+$enable-amp-border-colors:														false;
+
+// Display
+$enable-amp-display:																	false;
+$enable-amp-display-print-classes:										false;
+
+// Embeded
+$enable-amp-embeded-classes:													false;
+
+// Flex (Flexbox)
+$enable-amp-flex-classes:															false;
+$enable-amp-justify-content-classes:									false;
+$enable-amp-align-items-classes:											false;
+$enable-amp-align-content-classes:										false;
+$enable-amp-align-self-classes:												false;
+
+// Floating
+$enable-amp-float-classes:														false;
+
+// Overflow
+$enable-amp-overflow-classes:													false;
+
+// Positions
+$enable-amp-position-classes:													false;
+$enable-amp-position-fixed-top-class:									false;
+$enable-amp-position-fixed-bottom-class:							false;
+$enable-amp-position-sticky-top-class:								false;
+
+// Screenreaders
+$enable-amp-sr-only-class:														false;
+$enable-amp-sr-only-focusable-class:									false;
+
+// Shadows
+$enable-amp-shadow-classes:														false;
+
+// Sizing (Viewport additional helpers)
+$enable-amp-sizing:																		false;
+
+// Spacing
+$enable-amp-margin-and-bottom:												false;
+$enable-amp-margin-and-bottom-negative:								false;
+$enable-amp-margin-and-bottom-special-util:						false;
+
+// Stretched-link
+$enabled-amp-stretched-link:													false;
+
+// Text
+$enable-amp-text-alignment:														false;
+$enable-amp-text-alignment-responsive:								false;
+$enable-amp-text-transformation:											false;
+$enable-amp-text-font-weight:													false;
+$enable-amp-text-italic:															false;
+$enable-amp-text-color:																false;
+$enable-amp-text-misc:																false;
+$enable-amp-text-reset:																false;
+
+// Visibility
+$enable-amp-visibility:																false;
+
+
+// **************************
+// Typography
+// **************************
+$enable-amp-headings:																	true;	// h1, h2, h3, h4, h5, h6
+$enable-amp-lead:																			true;	//class `.lead`
+
+$enable-amp-hr:																				true;	// Horizontal rules `<hr>`
+
+// Emphasis
+$enable-amp-small:																		false;	// `<small> or class .small`
+$enable-amp-mark:																			false;	// `<mark> or class .mark`
+
+// Lists
+$enable-amp-list-unstyled:														false;
+$enable-amp-list-inline:															false;
+$enable-amp-list-inline-item:													false;
+
+// Misc
+$enable-amp-initialism:																false;
+$enable-amp-blockquote:																true;
+
+// Display
+// See (https://getbootstrap.com/docs/4.4/content/typography/#display-headings)
+$enable-amp-display-1:																false;	//class `.display-1`
+$enable-amp-display-2:																false;	//class `.display-2`
+$enable-amp-display-3:																false;	//class `.display-3`
+$enable-amp-display-4:																false;	//class `.display-4`

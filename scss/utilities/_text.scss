@@ -1,0 +1,79 @@
+
+//
+// Text
+//
+
+// Alignment
+@if $enable-amp-text-alignment {
+	.text-justify  { text-align: justify; }
+	.text-wrap     { white-space: normal; }
+	.text-nowrap   { white-space: nowrap; }
+	.text-truncate { @include text-truncate(); }
+}
+
+@if $enable-amp-text-alignment-responsive {
+	// Responsive alignment
+	@each $amp-breakpoint in map-keys($amp-grid-breakpoints) {
+	  @include media-breakpoint-up($amp-breakpoint) {
+	    $infix: breakpoint-infix($amp-breakpoint, $amp-grid-breakpoints);
+	
+	    .text#{$infix}-left   { text-align: left; }
+	    .text#{$infix}-right  { text-align: right; }
+	    .text#{$infix}-center { text-align: center; }
+	  }
+	}
+}
+
+// Transformation
+@if $enable-amp-text-transformation {
+	.text-lowercase  { text-transform: lowercase; }
+	.text-uppercase  { text-transform: uppercase; }
+	.text-capitalize { text-transform: capitalize; }
+}
+
+// Weight and italics
+@if $enable-amp-text-font-weight {
+	.font-weight-light   { font-weight: $font-weight-light; }
+	.font-weight-lighter { font-weight: $font-weight-lighter; }
+	.font-weight-normal  { font-weight: $font-weight-normal; }
+	.font-weight-bold    { font-weight: $font-weight-bold; }
+	.font-weight-bolder  { font-weight: $font-weight-bolder; }
+}
+
+@if $enable-amp-text-italic {
+	.font-italic         { font-style: italic; }
+}
+
+// Contextual colors
+@if $enable-amp-text-color {
+	.text-white { color: $white; }
+	
+	.text-body { color: $body-color; }
+	.text-muted { color: $text-muted; }
+	
+	.text-black-50 { color: rgba($black, .5); }
+	.text-white-50 { color: rgba($white, .5); }
+
+	@each $color, $value in $amp-theme-colors {
+	  @include text-emphasis-variant(".text-#{$color}", $value, true);
+	}
+}
+
+// Misc
+@if $enable-amp-text-misc {
+	.text-hide {
+	  @include text-hide($ignore-warning: true);
+	}
+	
+	.text-decoration-none { text-decoration: none; }
+	
+	.text-break {
+	  word-break: break-word; // IE & < Edge 18
+	  overflow-wrap: break-word;
+	}
+}
+
+// Reset
+@if $enable-amp-text-reset {
+	.text-reset { color: inherit; }
+}

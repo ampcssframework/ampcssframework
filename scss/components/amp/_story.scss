@@ -1,0 +1,15 @@
+// _story.scss
+
+@if $enable-amp-story {
+	amp-story-page {
+		@media (prefers-color-scheme: light) {
+			color: $body-color;
+			background: $body-bg;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			color: $body-color;
+			background: $body-bg;
+		}
+	}
+}

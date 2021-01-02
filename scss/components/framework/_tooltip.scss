@@ -1,0 +1,161 @@
+// _tooltip.scss
+
+//
+// Base styles
+//
+
+@if $enable-amp-tooltip {
+	.tooltip {
+	  position: relative;
+	  cursor: pointer;
+		z-index: $zindex-tooltip;
+	
+	  &::after {
+	    background-color: $tooltip-bg;
+	    border-radius: $tooltip-border-radius;
+	    color: $tooltip-color;
+	    content: attr(data-tooltip-title);
+	    font-weight: normal;
+	    min-width: $tooltip-min-width;
+	    padding: $tooltip-padding-y $tooltip-padding-x;
+	    text-align: $tooltip-text-align;
+	    text-transform: $tooltip-text-transform;
+	    font-size: $tooltip-font-size;
+	  }
+	  
+	  &:disabled::after {
+		  content: attr(data-disabled-tooltip-title)
+		}
+	
+	  &::before {
+	    width: 0;
+	    height: 0;
+	    content: "";
+	    position: absolute;
+	    transition: $tooltip-transition;
+	    transform-style: preserve-3d;
+	    opacity: 0;
+	    z-index: -1;
+	  }
+	
+	  &::after {
+	    position: absolute;
+	    transition: $tooltip-transition;
+	    transform-style: preserve-3d;
+	    opacity: 0;
+	    z-index: -1;
+	  }
+	  
+	  // Top tooltip
+	  @if $enable-amp-tooltip-top {
+		  &[data-tooltip-position="top"]::before {
+		    border-left: $tooltip-arrow-width solid transparent;
+		    border-right: $tooltip-arrow-width solid transparent;
+		    left: 50%;
+		    transform: translate3d(-50%, 10px, 0);
+		    border-top: $tooltip-arrow-width solid $tooltip-bg;
+		    bottom: calc(100% + 3px);
+		   }
+		
+		  &[data-tooltip-position="top"]:hover::before {
+		    transform: translate3d(-50%, 0px, 0);
+		  }
+	
+		  &[data-tooltip-position="top"]::after {
+		    left: 50%;
+		    transform: translate3d(-50%, 10px, 0);
+		    bottom: calc(100% + 10px);
+		  }
+		  
+		  &[data-tooltip-position="top"]:hover::after {
+		    transform: translate3d(-50%, 0px, 0);
+		  }
+		}
+		  
+		// Bottom tooltip
+	  @if $enable-amp-tooltip-bottom {
+		  &[data-tooltip-position="bottom"]::before {
+		    border-left: $tooltip-arrow-width solid transparent;
+		    border-right: $tooltip-arrow-width solid transparent;
+		    left: 50%;
+		    transform: translate3d(-50%, -10px, 0);
+		    border-bottom: $tooltip-arrow-width solid $tooltip-bg;
+		    top: calc(100% + 3px);
+		  }
+		  
+		  &[data-tooltip-position="bottom"]:hover::before {
+		    transform: translate3d(-50%, 0px, 0);
+		  }
+		  
+		  &[data-tooltip-position="bottom"]::after {
+		    left: 50%;
+		    transform: translate3d(-50%, -10px, 0);
+		    top: calc(100% + 10px);
+		  }
+		  
+		  &[data-tooltip-position="bottom"]:hover::after {
+		    transform: translate3d(-50%, 0px, 0);
+		  }
+		}
+		  
+		// Left tooltip
+	  @if $enable-amp-tooltip-left {
+		  &[data-tooltip-position="left"]::before {
+		    transform: translate3d(10px, -50%, 0);
+		    border-left: $tooltip-arrow-width solid $tooltip-bg;
+		    right: calc(100% + 3px);
+		    border-top: $tooltip-arrow-width solid transparent;
+		    border-bottom: $tooltip-arrow-width solid transparent;
+		    top: 50%;
+		  }
+		
+		  &[data-tooltip-position="left"]:hover::before {
+		    transform: translate3d(0px, -50%, 0);
+		  }
+		
+		  &[data-tooltip-position="left"]::after {
+		    top: 50%;
+		    transform: translate3d(10px, -50%, 0);
+		    right: calc(100% + 10px);
+		    right: calc(100% + 10px);
+		  }
+		  
+		  &[data-tooltip-position="left"]:hover::after {
+		    transform: translate3d(0px, -50%, 0);
+		  }
+		}
+		  
+		// Right tooltip
+	  @if $enable-amp-tooltip-right {
+		  &[data-tooltip-position="right"]::before {
+		    transform: translate3d(-10px, -50%, 0);
+		    border-right: $tooltip-arrow-width solid $tooltip-bg;
+		    left: calc(100% + 3px);
+		    border-top: $tooltip-arrow-width solid transparent;
+		    border-bottom: $tooltip-arrow-width solid transparent;
+		    top: 50%;
+		  }
+		  
+		  &[data-tooltip-position="right"]:hover::before {
+		    transform: translate3d(0px, -50%, 0);
+		  }
+		  
+		  &[data-tooltip-position="right"]::after {
+		    top: 50%;
+		    transform: translate3d(-10px, -50%, 0);
+		    left: calc(100% + 10px);
+		  }
+		  
+		  &[data-tooltip-position="right"]:hover::after {
+		    transform: translate3d(0px, -50%, 0);
+		  }
+		}
+	
+	  &:hover {
+	    &::before, &::after {
+	      opacity: 1;
+	      z-index: 100;
+	    }
+	  }
+	}
+}
